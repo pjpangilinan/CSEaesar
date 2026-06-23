@@ -175,6 +175,8 @@ a:hover { color: var(--primary-strong); }
   .container { padding: 0 var(--margin-d); }
 }
 main { flex: 1; }
+.main-padding { padding-top: var(--space-10); padding-bottom: var(--space-12); }
+.section-gap { margin-bottom: var(--space-8); }
 .flex { display: flex; }
 .flex-col { flex-direction: column; }
 .items-center { align-items: center; }
@@ -287,6 +289,8 @@ main { flex: 1; }
 .text-pass { color: var(--pass); }
 .text-fail { color: var(--fail); }
 .text-caution { color: var(--caution); }
+.score-big { font-family: var(--font-display); font-size: 56px; font-weight: 700; color: var(--primary); }
+.score-pct { font-family: var(--font-display); font-size: 40px; font-weight: 700; color: var(--primary); }
 
 @media (min-width: 768px) {
   .text-display { font-size: 48px; }
@@ -901,6 +905,91 @@ main { flex: 1; }
    ========================================================= */
 @media (max-width: 767px) {
   .hide-mobile { display: none; }
+
+  /* Cards: 48px → 20px padding on mobile */
+  .card { padding: var(--space-5); }
+  .card-title { margin-bottom: var(--space-3); padding-bottom: var(--space-3); font-size: 16px; }
+
+  /* Navbar: shorter, show compact nav links */
+  .navbar { height: 60px; }
+  .navbar-logo { font-size: 22px; }
+  .navbar-links { display: flex; gap: var(--space-2); }
+  .nav-link { padding: var(--space-1) var(--space-2); font-size: 10px; }
+
+  /* Icon buttons: 40px → 44px for touch */
+  .icon-btn { width: 44px; height: 44px; }
+
+  /* Stat values: 32px → 24px on mobile */
+  .stat-value { font-size: 24px; }
+  .stat-label { font-size: 10px; }
+
+  /* Hero stats: 2x2 → 2x2 but tighter gap */
+  .hero-stats { gap: var(--space-3); }
+
+  /* Footer: less padding */
+  .footer { padding: var(--space-6) 0; margin-top: var(--space-8); }
+  .footer-inner { gap: var(--space-2); }
+
+  /* Text sizes */
+  .text-display { font-size: 28px; }
+  .text-headline { font-size: 20px; }
+  .text-body-lg { font-size: 16px; }
+
+  /* Progress ring: smaller on mobile */
+  .progress-ring-value .num { font-size: 24px; }
+
+  /* Choices: slightly less padding */
+  .choice { padding: var(--space-3); }
+  .choice-letter { width: 28px; height: 28px; font-size: 13px; }
+
+  /* Nav grid: keep 5 cols but smaller cells */
+  .nav-cell { font-size: 11px; }
+
+  /* Chips: bigger touch target */
+  .chip { padding: var(--space-3) var(--space-4); min-height: 44px; }
+
+  /* Flag button: bigger touch target */
+  .flag-btn { padding: var(--space-3) var(--space-4); min-height: 44px; }
+
+  /* Form radios: less padding */
+  .form-radio { padding: var(--space-3); gap: var(--space-3); }
+  .form-radio-text strong { font-size: 15px; }
+  .form-radio-text small { font-size: 13px; }
+
+  /* Main padding + section gaps: reduce */
+  .main-padding { padding-top: var(--space-6) !important; padding-bottom: var(--space-8) !important; }
+  .section-gap { margin-bottom: var(--space-6) !important; }
+
+  /* Dashboard mid/bottom gaps: reduce */
+  .dashboard-mid, .dashboard-bottom { gap: var(--space-6) !important; }
+
+  /* Buttons: full-width on mobile in exam footer */
+  .btn { padding: var(--space-3) var(--space-4); font-size: 13px; }
+
+  /* Modal: less padding, full-width */
+  .modal { padding: var(--space-4); max-width: calc(100vw - 32px); }
+  .modal-backdrop { padding: var(--space-2); }
+  /* Stack AI prompt inputs vertically */
+  .modal .grid[style*="1fr 2fr 2fr"] { grid-template-columns: 1fr !important; }
+
+  /* Banner: smaller, wraps */
+  .banner { top: 70px; font-size: 12px; padding: var(--space-2) var(--space-3); left: var(--space-2); right: var(--space-2); transform: none; width: auto; }
+  .dark .banner { left: var(--space-2); right: var(--space-2); }
+
+  /* Table: tighter */
+  .table { font-size: 12px; }
+  .table th, .table td { padding: var(--space-2); }
+
+  /* Review items: tighter */
+  .review-item { padding: var(--space-3); }
+
+  /* Insights: smaller icon */
+  .insight { padding: var(--space-3); gap: var(--space-3); }
+  .insight-icon { width: 36px; height: 36px; font-size: 18px; }
+
+  /* Results screen: smaller scores */
+  .score-big { font-size: 36px !important; }
+  .score-pct { font-size: 28px !important; }
 }
 @media (min-width: 768px) {
   .hide-desktop { display: none; }

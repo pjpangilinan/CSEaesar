@@ -341,7 +341,7 @@
     qcard.appendChild(choicesBox);
 
     // Footer nav
-    const nav = A.el('div', { class: 'flex justify-between items-center mt-8', style: 'gap: var(--space-3);' });
+    const nav = A.el('div', { class: 'flex justify-center items-center mt-8', style: 'gap: var(--space-2); flex-wrap: wrap;' });
     const prevBtn = A.el('button', { class: 'btn btn-ghost', id: 'btn-prev', type: 'button' });
     prevBtn.innerHTML = A.ICONS.chevronLeft + ' Previous';
     prevBtn.addEventListener('click', prevQuestion);
@@ -666,14 +666,14 @@
     panel.appendChild(A.el('div', { class: 'text-mono-sm text-muted mb-8', style: 'text-transform: uppercase; letter-spacing: 0.10em;' },
       (record.mode === 'mock' ? 'Mock Exam' : 'Practice Test') + ' Results'));
 
-    const scoreRow = A.el('div', { class: 'flex justify-center items-center gap-8 mb-8', style: 'flex-wrap: wrap;' });
+    const scoreRow = A.el('div', { class: 'flex justify-center items-center mb-8', style: 'gap: var(--space-4); flex-wrap: wrap;' });
     const scoreBig = A.el('div');
-    const bigNum = A.el('div', { class: 'text-display text-primary', style: 'font-size: 56px; line-height: 1;' });
+    const bigNum = A.el('div', { class: 'score-big' });
     bigNum.appendChild(document.createTextNode(String(record.totalCorrect) + ' '));
     bigNum.appendChild(A.el('span', { class: 'text-headline text-muted', style: 'font-size: 24px;' }, '/ ' + record.totalItems));
     scoreBig.appendChild(bigNum);
     const pct = A.el('div');
-    pct.appendChild(A.el('div', { class: 'text-display text-primary', style: 'font-size: 40px; line-height: 1;' }, A.fmtPercent(record.totalCorrect, record.totalItems, 2)));
+    pct.appendChild(A.el('div', { class: 'score-pct' }, A.fmtPercent(record.totalCorrect, record.totalItems, 2)));
     pct.appendChild(A.el('div', { class: 'text-mono-sm text-muted' }, 'Final Rating'));
     scoreRow.appendChild(scoreBig);
     scoreRow.appendChild(pct);
@@ -749,7 +749,7 @@
       record.perQuestion.forEach((pq, i) => {
         const isRight = pq.userAnswer === pq.answer;
         const item = A.el('div', { class: 'review-item ' + (isRight ? 'right' : 'wrong') + (flaggedSet.has(i) ? ' flagged' : '') });
-        const itemHead = A.el('div', { class: 'flex justify-between items-center', style: 'gap: var(--space-3); margin-bottom: var(--space-2);' });
+        const itemHead = A.el('div', { class: 'flex justify-between items-start', style: 'gap: var(--space-2); margin-bottom: var(--space-2); flex-wrap: wrap;' });
         const left2 = A.el('div', { class: 'flex items-center gap-2' });
         const icon = A.el('span', { class: 'review-icon' });
         icon.innerHTML = isRight ? A.ICONS.check : A.ICONS.x;
