@@ -143,7 +143,7 @@ h1, h2, h3, h4, h5, h6 { margin: 0; font-weight: 600; line-height: 1.25; }
 p { margin: 0; }
 button { font-family: inherit; cursor: pointer; border: none; background: none; color: inherit; }
 input, select, textarea { font-family: inherit; color: inherit; }
-a { color: var(--primary); text-decoration: none; transition: color 0.15s ease; }
+a { color: var(--primary); text-decoration: none; transition: color 0.1s ease, text-decoration-color 0.1s ease; }
 a:hover { color: var(--primary-strong); }
 
 /* Focus ring */
@@ -153,19 +153,15 @@ a:hover { color: var(--primary-strong); }
   border-radius: var(--r-sm);
 }
 
-/* Marble texture overlay (subtle) */
+/* Subtle background texture (CSS only, no SVG filter for perf) */
 .marble-bg {
-  position: relative;
+  background-color: var(--background);
+  background-image:
+    radial-gradient(at 20% 0%, var(--surface-high) 0%, transparent 50%),
+    radial-gradient(at 80% 100%, var(--surface-low) 0%, transparent 50%);
+  background-attachment: fixed;
+  min-height: 100vh;
 }
-.marble-bg::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background-image: url("data:image/svg+xml;utf8,<svg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/></filter><rect width='100%' height='100%' filter='url(%23n)' opacity='0.03'/></svg>");
-  pointer-events: none;
-  z-index: 0;
-}
-.marble-bg > * { position: relative; z-index: 1; }
 
 /* =========================================================
    3. LAYOUT
@@ -340,7 +336,7 @@ main { flex: 1; }
   color: var(--on-surface-variant);
   padding: var(--space-2) var(--space-4);
   border-radius: var(--r-sm);
-  transition: background 0.15s ease, color 0.15s ease;
+  transition: border-color 0.1s ease;
 }
 .nav-link:hover { background: var(--surface-high); color: var(--primary); }
 .nav-link.active {
@@ -355,7 +351,7 @@ main { flex: 1; }
   border-radius: 50%;
   display: flex; align-items: center; justify-content: center;
   color: var(--on-surface-variant);
-  transition: background 0.15s ease, color 0.15s ease;
+  transition: border-color 0.1s ease;
 }
 .icon-btn:hover { background: var(--surface-high); color: var(--primary); }
 
@@ -368,7 +364,7 @@ main { flex: 1; }
   border-radius: var(--r-md);
   padding: var(--space-8);
   position: relative;
-  transition: border-color 0.15s ease, transform 0.15s ease;
+  transition: border-color 0.1s ease;
 }
 .dark .card { background: var(--surface-low); }
 .card.gold-top { border-top: 2px solid var(--secondary); }
@@ -405,7 +401,7 @@ main { flex: 1; }
   border-radius: var(--r-sm);
   border: 2px solid transparent;
   cursor: pointer;
-  transition: background 0.15s ease, color 0.15s ease, border-color 0.15s ease, transform 0.05s ease;
+  transition: border-color 0.1s ease, transform 0.05s ease;
   user-select: none;
 }
 .btn svg { flex-shrink: 0; }
@@ -463,7 +459,7 @@ main { flex: 1; }
   border-radius: var(--r-sm);
   color: var(--on-surface);
   font-size: 16px;
-  transition: border-color 0.15s ease;
+  transition: border-color 0.1s ease;
 }
 .dark .form-input,
 .dark .form-select,
@@ -485,7 +481,7 @@ main { flex: 1; }
   border: 1px solid var(--outline-variant);
   border-radius: var(--r-md);
   cursor: pointer;
-  transition: border-color 0.15s ease, background 0.15s ease;
+  transition: border-color 0.1s ease;
 }
 .form-radio:hover { background: var(--surface-low); }
 .form-radio.selected { border-color: var(--secondary); background: var(--surface-low); }
@@ -505,7 +501,7 @@ main { flex: 1; }
   border-radius: var(--r-md);
   cursor: pointer;
   font-size: 14px;
-  transition: all 0.15s ease;
+  transition: border-color 0.1s ease;
 }
 .chip:hover { border-color: var(--secondary); }
 .chip.selected { background: var(--primary); color: var(--on-primary); border-color: var(--primary); }
@@ -645,7 +641,7 @@ main { flex: 1; }
   color: var(--on-surface);
   font-family: var(--font-mono);
 }
-.table tbody tr { transition: background 0.15s ease; }
+.table tbody tr { transition: background 0.1s ease; }
 .table tbody tr:hover { background: var(--surface-low); }
 .table-wrap { overflow-x: auto; }
 
@@ -662,7 +658,7 @@ main { flex: 1; }
   border-radius: var(--r-md);
   background: var(--surface-lowest);
   cursor: pointer;
-  transition: border-color 0.15s ease, background 0.15s ease;
+  transition: border-color 0.1s ease;
 }
 .dark .choice { background: var(--surface-low); }
 .choice:hover { border-left-color: var(--secondary); }
@@ -711,7 +707,7 @@ main { flex: 1; }
   font-size: 12px;
   cursor: pointer;
   position: relative;
-  transition: all 0.15s ease;
+  transition: border-color 0.1s ease;
 }
 .dark .nav-cell { background: var(--surface-low); }
 .nav-cell:hover { border-color: var(--secondary); }
@@ -1033,7 +1029,7 @@ main { flex: 1; }
   font-size: 13px;
   font-weight: 500;
   cursor: pointer;
-  transition: all 0.15s ease;
+  transition: border-color 0.1s ease;
 }
 .flag-btn:hover { color: var(--caution); background: var(--caution-soft); border-color: var(--caution-soft); }
 .flag-btn.active { color: var(--caution); background: var(--caution-soft); border-color: var(--caution); }
