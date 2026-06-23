@@ -215,13 +215,6 @@ Clearing your browser's site data resets the app.
 
 ---
 
-## Roadmap
-
-- **Phase 5 (later):** grow bank to 500+ items, more Filipino question types, printable exam summary (browser print), and re-take-this-exam action on results.
-- **Open to contributions:** bug reports, additional questions (especially Filipino and current-events), UX suggestions.
-
----
-
 ## License
 
 Free to use. No warranty. Questions are for practice only — verify against the official CSC materials before exam day.
