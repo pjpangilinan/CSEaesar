@@ -378,6 +378,7 @@ main { flex: 1; }
   border-color: var(--gold-line-strong);
 }
 .dark .card.featured { background: var(--surface-high-dark); }
+.exam-card { padding: var(--space-6); }
 .card-title {
   font-family: var(--font-display);
   font-size: 18px;
@@ -757,6 +758,7 @@ main { flex: 1; }
   color: var(--primary);
   margin-bottom: var(--space-4);
 }
+.hero { margin-bottom: var(--space-12); }
 
 /* =========================================================
    16. EMPTY / ERROR STATES
@@ -908,6 +910,7 @@ main { flex: 1; }
 
   /* Cards: 48px → 20px padding on mobile */
   .card { padding: var(--space-5); }
+  .exam-card { padding: var(--space-4); }
   .card-title { margin-bottom: var(--space-3); padding-bottom: var(--space-3); font-size: 16px; }
 
   /* Navbar: shorter, show compact nav links */
@@ -962,6 +965,7 @@ main { flex: 1; }
 
   /* Dashboard mid/bottom gaps: reduce */
   .dashboard-mid, .dashboard-bottom { gap: var(--space-6) !important; }
+  .hero { margin-bottom: var(--space-6); }
 
   /* Buttons: full-width on mobile in exam footer */
   .btn { padding: var(--space-3) var(--space-4); font-size: 13px; }

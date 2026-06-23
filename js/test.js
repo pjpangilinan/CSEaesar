@@ -325,8 +325,8 @@
     main.id = 'exam-main';
 
     // Question card
-    const qcard = A.el('div', { class: 'card' });
-    const qHead = A.el('div', { class: 'flex justify-between items-center mb-8' });
+    const qcard = A.el('div', { class: 'card exam-card' });
+    const qHead = A.el('div', { class: 'flex justify-between items-center mb-6' });
     const innerCat = A.el('span', { class: 'cat-tag' });
     const flagBtn = A.el('button', { class: 'flag-btn', id: 'btn-flag', type: 'button', 'aria-label': 'Flag for review' });
     flagBtn.addEventListener('click', toggleFlag);
@@ -334,14 +334,14 @@
     qHead.appendChild(flagBtn);
     qcard.appendChild(qHead);
 
-    const questionText = A.el('div', { class: 'text-body-lg mb-8', style: 'white-space: pre-wrap;' });
+    const questionText = A.el('div', { class: 'text-body-lg mb-6', style: 'white-space: pre-wrap;' });
     qcard.appendChild(questionText);
 
-    const choicesBox = A.el('div', { class: 'space-y-3' });
+    const choicesBox = A.el('div', { class: 'space-y-2' });
     qcard.appendChild(choicesBox);
 
     // Footer nav
-    const nav = A.el('div', { class: 'flex justify-center items-center mt-8', style: 'gap: var(--space-2); flex-wrap: wrap;' });
+    const nav = A.el('div', { class: 'flex justify-center items-center mt-6', style: 'gap: var(--space-2); flex-wrap: wrap;' });
     const prevBtn = A.el('button', { class: 'btn btn-ghost', id: 'btn-prev', type: 'button' });
     prevBtn.innerHTML = A.ICONS.chevronLeft + ' Previous';
     prevBtn.addEventListener('click', prevQuestion);
