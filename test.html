@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CSEaesar — Practice Test</title>
+  <meta name="description" content="Take a Civil Service Exam practice test: 170-item mock with timer, tab-focus detection, flag for review, full answer explanations.">
+  <meta name="theme-color" content="#5c1a8a">
+  <meta name="color-scheme" content="light dark">
+
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='12' fill='%235c1a8a'/%3E%3Ctext x='32' y='46' font-family='Georgia,serif' font-size='42' font-weight='700' fill='%23c9a84c' text-anchor='middle'%3EC%3C/text%3E%3C/svg%3E">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="css/style.css">
+
+  <script>
+    try {
+      var s = JSON.parse(localStorage.getItem('cseasar_settings') || '{}');
+      if (s.darkMode) document.documentElement.classList.add('dark');
+    } catch (e) {}
+  </script>
+</head>
+<body class="marble-bg">
+
+  <main class="container" style="padding-top: var(--space-10); padding-bottom: var(--space-12);">
+    <div id="test-root"></div>
+  </main>
+
+  <script src="data/questions.js"></script>
+  <script src="js/app.js"></script>
+  <script src="js/test.js"></script>
+  <noscript>
+    <div style="padding: 2rem; text-align: center; font-family: sans-serif;">
+      <h1>CSEaesar requires JavaScript</h1>
+      <p>Please enable JavaScript to use the reviewer.</p>
+    </div>
+  </noscript>
+</body>
+</html>

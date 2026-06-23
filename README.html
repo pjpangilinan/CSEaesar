@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CSEaesar — README</title>
+  <meta name="description" content="CSEaesar — free static reviewer for the Philippine Civil Service Examination. Setup, JSON schema, and LLM prompt template.">
+  <meta name="theme-color" content="#5c1a8a">
+  <meta name="color-scheme" content="light dark">
+
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='12' fill='%235c1a8a'/%3E%3Ctext x='32' y='46' font-family='Georgia,serif' font-size='42' font-weight='700' fill='%23c9a84c' text-anchor='middle'%3EC%3C/text%3E%3C/svg%3E">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="css/style.css">
+  <style>
+    .readme-wrap { max-width: 820px; margin: 0 auto; padding: var(--space-6) 0 var(--space-12); }
+    .readme-card { padding: var(--space-8); }
+    .readme-body { line-height: 1.65; }
+    .readme-body h1, .readme-body h2, .readme-body h3, .readme-body h4 { margin: 1.5em 0 0.5em; }
+    .readme-body h1 { font-family: var(--font-display); font-size: 32px; color: var(--primary); margin-top: 0; }
+    .readme-body h2 { font-family: var(--font-display); font-size: 22px; color: var(--primary); border-bottom: 1px solid var(--gold-line); padding-bottom: 8px; }
+    .readme-body h3 { font-size: 17px; color: var(--primary-strong); }
+    .readme-body p { margin: 0.6em 0; }
+    .readme-body ul, .readme-body ol { padding-left: 1.5em; margin: 0.6em 0; }
+    .readme-body li { margin: 0.25em 0; }
+    .readme-body code { font-family: var(--font-mono); font-size: 0.9em; background: var(--surface-high); padding: 1px 5px; border-radius: 3px; }
+    .dark .readme-body code { background: var(--surface-high-dark); }
+    .readme-body pre { font-family: var(--font-mono); font-size: 13px; background: var(--surface-high); padding: var(--space-4); border-radius: var(--r-md); overflow-x: auto; border: 1px solid var(--gold-line); }
+    .dark .readme-body pre { background: var(--surface-high-dark); }
+    .readme-body pre code { background: transparent; padding: 0; }
+    .readme-body table { width: 100%; border-collapse: collapse; margin: 0.6em 0; font-size: 14px; }
+    .readme-body th, .readme-body td { padding: 8px 10px; border-bottom: 1px solid var(--gold-line); text-align: left; vertical-align: top; }
+    .readme-body th { font-family: var(--font-mono); font-size: 12px; text-transform: uppercase; letter-spacing: 0.05em; color: var(--on-surface-variant); }
+    .readme-body a { color: var(--primary); text-decoration: underline; text-decoration-color: var(--secondary); text-underline-offset: 2px; }
+    .readme-body a:hover { color: var(--primary-strong); }
+    .readme-body blockquote { margin: 0.8em 0; padding: var(--space-3) var(--space-4); border-left: 3px solid var(--secondary); background: var(--surface-low); color: var(--on-surface-variant); }
+    .dark .readme-body blockquote { background: var(--surface-low-dark); }
+    .readme-body hr { border: none; border-top: 1px solid var(--gold-line); margin: 1.6em 0; }
+    .readme-loading { color: var(--on-surface-variant); font-style: italic; }
+    .readme-topbar { display: flex; align-items: center; justify-content: space-between; gap: var(--space-3); margin-bottom: var(--space-4); flex-wrap: wrap; }
+    .readme-topbar a { font-family: var(--font-mono); font-size: 12px; text-transform: uppercase; letter-spacing: 0.10em; }
+    @media print {
+      .navbar, .footer, .readme-topbar, .btn { display: none !important; }
+    }
+  </style>
+
+  <script>
+    try {
+      var s = JSON.parse(localStorage.getItem('cseasar_settings') || '{}');
+      if (s.darkMode) document.documentElement.classList.add('dark');
+    } catch (e) {}
+  </script>
+</head>
+<body class="marble-bg">
+
+  <main class="container">
+    <div class="readme-wrap">
+      <div class="readme-topbar">
+        <a href="index.html">&larr; Back to CSEaesar</a>
+        <a href="README.md" target="_blank" rel="noopener">View raw markdown</a>
+      </div>
+      <article class="card readme-card">
+        <div id="readme-body" class="readme-body">
+          <p class="readme-loading">Loading README&hellip;</p>
+        </div>
+      </article>
+    </div>
+  </main>
+
+  <script src="https://cdn.jsdelivr.net/npm/marked@12.0.2/marked.min.js"></script>
+  <script>
+    (function () {
+      var target = document.getElementById('readme-body');
+      fetch('README.md', { cache: 'no-cache' })
+        .then(function (r) {
+          if (!r.ok) throw new Error('HTTP ' + r.status);
+          return r.text();
+        })
+        .then(function (text) {
+          if (typeof marked !== 'undefined') {
+            marked.setOptions({ breaks: false, gfm: true });
+            target.innerHTML = marked.parse(text);
+          } else {
+            target.textContent = text;
+          }
+          // Make all external-ish links open in a new tab safely.
+          target.querySelectorAll('a[href^="http"]').forEach(function (a) {
+            a.setAttribute('target', '_blank');
+            a.setAttribute('rel', 'noopener noreferrer');
+          });
+        })
+        .catch(function (err) {
+          target.innerHTML = '<p class="readme-loading">Could not load README.md. Open <a href="README.md">README.md</a> directly. (' + (err && err.message ? err.message : 'unknown error') + ')</p>';
+        });
+    })();
+  </script>
+</body>
+</html>

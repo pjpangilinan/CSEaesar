@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CSEaesar — Civil Service Exam Reviewer</title>
+  <meta name="description" content="CSEaesar — free static reviewer for the Philippine Civil Service Examination (Professional level). 200+ practice items, mock exam with timer, custom question bank, progress tracking.">
+  <meta name="theme-color" content="#5c1a8a">
+  <meta name="color-scheme" content="light dark">
+
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='12' fill='%235c1a8a'/%3E%3Ctext x='32' y='46' font-family='Georgia,serif' font-size='42' font-weight='700' fill='%23c9a84c' text-anchor='middle'%3EC%3C/text%3E%3C/svg%3E">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="css/style.css">
+
+  <script>
+    // Apply theme before paint to avoid flash.
+    try {
+      var s = JSON.parse(localStorage.getItem('cseasar_settings') || '{}');
+      if (s.darkMode) document.documentElement.classList.add('dark');
+    } catch (e) {}
+  </script>
+</head>
+<body class="marble-bg">
+
+  <main class="container" style="padding-top: var(--space-10); padding-bottom: var(--space-12);">
+    <section id="hero" class="hero" style="margin-bottom: var(--space-12);"></section>
+
+    <section style="margin-bottom: var(--space-10);">
+      <div class="dashboard-mid" style="display: grid; grid-template-columns: 1fr; gap: var(--space-8);">
+        <div id="mastery"></div>
+        <div id="category-bars"></div>
+      </div>
+    </section>
+
+    <section style="margin-bottom: var(--space-10);" id="recommendations"></section>
+
+    <section>
+      <div class="dashboard-bottom" style="display: grid; grid-template-columns: 1fr; gap: var(--space-8);">
+        <div id="history"></div>
+        <div id="notes"></div>
+        <div id="custom-bank"></div>
+      </div>
+    </section>
+  </main>
+
+  <style>
+    @media (min-width: 900px) {
+      .dashboard-mid { grid-template-columns: 1fr 2fr !important; }
+      .dashboard-bottom { grid-template-columns: 1fr 1fr !important; }
+      .dashboard-bottom > #history,
+      .dashboard-bottom > #notes { grid-column: span 1; }
+      .dashboard-bottom > #custom-bank { grid-column: span 2; }
+    }
+  </style>
+
+  <script src="data/questions.js"></script>
+  <script src="js/app.js"></script>
+  <script src="js/dashboard.js"></script>
+  <noscript>
+    <div style="padding: 2rem; text-align: center; font-family: sans-serif;">
+      <h1>CSEaesar requires JavaScript</h1>
+      <p>Please enable JavaScript to use the reviewer.</p>
+    </div>
+  </noscript>
+</body>
+</html>
